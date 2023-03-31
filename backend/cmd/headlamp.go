@@ -777,6 +777,8 @@ func createHeadlampHandler(config *HeadlampConfig) http.Handler {
 		}
 	})
 
+	config.setupProxyRoutes(r)
+
 	// Serve the frontend if needed
 	if config.staticDir != "" {
 		spa := spaHandler{staticPath: config.staticDir, indexPath: "index.html", baseURL: config.baseURL}
